@@ -15,6 +15,7 @@ object ParquetExercise {
   def doAnalysisOperations(parqfile : DataFrame): Unit = {
     val myData = parqfile.cache()
     myData.showChannelAndBrowser.show()
+    //myData.groupByAndAgg.show(20)
   }
 
   def main(args : Array[String]) = {

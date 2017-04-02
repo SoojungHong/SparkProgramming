@@ -1,6 +1,8 @@
 package com.exercise
 
 import org.apache.spark.sql.DataFrame
+import com.exercise.Setting._
+import org.apache.spark.sql.functions._
 import scala.reflect.internal.util.TableDef.Column
 
 /**
@@ -19,7 +21,12 @@ object AnalyseParquet {
         .select("browser")
     }
 
+    //todo : filter().groupBy().aggregate().withColumn()
+    def groupByAndAgg() = {
+      df.filter(df.col("channel") !== "prod-mg")
+        .groupBy("domain")
+        .agg(max("color"))
+    }
   }
-
 
 }
