@@ -13,9 +13,26 @@ import com.exercise.AnalyseParquet._
 object ParquetExercise {
 
   def doAnalysisOperations(parqfile : DataFrame): Unit = {
-    val myData = parqfile.cache()
-    myData.showChannelAndBrowser.show()
-    //myData.groupByAndAgg.show(20)
+    //show schema of data frame
+    //parqfile.showDataFrameSchema()
+
+    //get partial part of data frame
+    var partial = parqfile.getPartialDataFrame()
+    println("Count of Partial Data Frame : " + partial.count())
+    partial.show()
+
+    //test groupBy and aggregate
+    parqfile.groupByAndAgg()
+
+    //test select and $"ABC"
+    parqfile.testSelect()
+
+    //TODO : Clean-up below
+    //val myData = parqfile.cache()
+    //myData.showChannelAndBrowser.show()
+    //myData.groupByAndAgg.show(20) //FIXME : running this code do nothing or infinite loop?
+    //myData.testForEach()
+    //myData.testGroupBy()
   }
 
   def main(args : Array[String]) = {
@@ -24,8 +41,7 @@ object ParquetExercise {
     val sc = new SparkContext(conf)
     val sqlContext = new org.apache.spark.sql.SQLContext(sc)
     val parqfile = sqlContext.read.parquet("C:/Users/a613274/Backup/Soojung/NZZdata/nzztest.parquet") //local
-    //val parqfile = sqlContext.read.parquet("hdfs:///user/shong/nzztest.parquet") //HDFS
-    parqfile.show(20)
+    //parqfile.show(20)
 
     doAnalysisOperations(parqfile)
   }

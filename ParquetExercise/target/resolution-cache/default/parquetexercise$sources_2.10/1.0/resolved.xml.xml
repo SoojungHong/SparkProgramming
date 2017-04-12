@@ -4,7 +4,7 @@
 		module="parquetexercise$sources_2.10"
 		revision="1.0"
 		status="integration"
-		publication="20170402212037"
+		publication="20170412114518"
 	/>
 	<configurations>
 		<conf name="compile" visibility="public" description=""/>
