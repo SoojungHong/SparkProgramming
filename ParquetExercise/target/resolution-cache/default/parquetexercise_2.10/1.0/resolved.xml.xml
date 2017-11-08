@@ -4,7 +4,7 @@
 		module="parquetexercise_2.10"
 		revision="1.0"
 		status="integration"
-		publication="20170412114510"
+		publication="20170623175800"
 	>
 		<description>
 		ParquetExercise
@@ -36,5 +36,6 @@
 		<dependency org="org.scala-lang" name="scala-library" rev="2.10.5" conf="scala-tool->default,optional(default);compile->default(compile)"/>
 		<dependency org="org.apache.spark" name="spark-core_2.10" rev="1.6.1" conf="compile->default(compile)"/>
 		<dependency org="org.apache.spark" name="spark-sql_2.10" rev="1.6.1" conf="compile->default(compile)"/>
+		<dependency org="org.apache.spark" name="spark-hive_2.10" rev="1.6.1" conf="compile->default(compile)"/>
 	</dependencies>
 </ivy-module>

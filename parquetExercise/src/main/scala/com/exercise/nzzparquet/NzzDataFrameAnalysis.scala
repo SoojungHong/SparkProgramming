@@ -58,6 +58,19 @@ object NzzDataFrameAnalysis {
 
     }
 
+    //join code
+    /*
+      val usersWithUnreadArticles = usersWithAllArticles
+ +      .join(broadcast(publishedArticlesReadByUser),
+ +        usersWithAllArticles(UserId) === publishedArticlesReadByUser("userid") &&
+ +          usersWithAllArticles("nzz_id") === publishedArticlesReadByUser("nzzid"),
+ +        "left_outer"
+ +      )
+ +      .where(col("nzzid").isNull)
+ +      .drop("nzzid").drop("userid").drop("time")
+
+     */
+
   }
 
 }

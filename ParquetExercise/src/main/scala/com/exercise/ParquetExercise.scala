@@ -6,44 +6,75 @@ import org.apache.spark.sql.{DataFrame, SQLContext}
 
 import scala.reflect.internal.util.TableDef.Column
 import com.exercise.AnalyseParquet._
+import org.apache.spark.sql.expressions.Window
+import org.apache.spark.sql.functions.{col, dense_rank, desc}
+import org.apache.spark.sql.hive.HiveContext
+import org.apache.spark.sql.hive.orc._
+
+import org.apache.spark.sql.DataFrame
+import org.apache.spark.sql.expressions.Window
+import org.apache.spark.sql.functions._
 
 /**
   * Created by shong on 17.02.2017.
   */
 object ParquetExercise {
 
-  def doAnalysisOperations(parqfile : DataFrame): Unit = {
-    //show schema of data frame
+  def doAnalysisOperations(parqfile : DataFrame, sc:SparkContext): Unit = {
+    //println("[INFO] Showing the scheme of dataframe ")
     //parqfile.showDataFrameSchema()
 
-    //get partial part of data frame
-    var partial = parqfile.getPartialDataFrame()
-    println("Count of Partial Data Frame : " + partial.count())
-    partial.show()
+    //println("[INFO] Filtering dataframe using column 'channel' is 'prod-nzz' ")
+    //parqfile.doFilterDataFrame().show(10)
 
-    //test groupBy and aggregate
-    parqfile.groupByAndAgg()
+    //println("[INFO] Filtering dataframe using column 'channel' is 'prod-nzz' and select 'browser' ")
+    //parqfile.doFilterAndSelect().show(10)
 
-    //test select and $"ABC"
-    parqfile.testSelect()
+    //test : groupBy and aggregate
+    //println("[INFO] do GroupBy and Aggregate ")
+    //parqfile.doGroupByAndAggregate()
 
-    //TODO : Clean-up below
-    //val myData = parqfile.cache()
-    //myData.showChannelAndBrowser.show()
-    //myData.groupByAndAgg.show(20) //FIXME : running this code do nothing or infinite loop?
-    //myData.testForEach()
-    //myData.testGroupBy()
+    //test : repartition on RDD
+    //println("[INFO] Returns a new DataFrame that has exactly numPartitions partitions.")
+    //parqfile.doCoalesceTest(16)
+
+    //println("[INFO] drop column ")
+    //parqfile.doDrop()
+
+    //println("[Log] Test find() and getOrElse() methods")
+    //parqfile.doFindAndGetOrElse()
+
+    //parqfile.parquetExercise(sc)
+
+    //parqfile.doUDFexercise(sc)
+
+    //parqfile.dropDuplicate(sc)
+
+    //parqfile.exerciseAs(sc)
+
+    //parqfile.exerciseSeq()
+
+    parqfile.exerciseSomeOption()
+
   }
 
   def main(args : Array[String]) = {
+    //-----------------------
+    // setup Spark Context
+    //-----------------------
     System.setProperty("hadoop.home.dir", "c:\\winutil\\")
     val conf = new SparkConf().setAppName("ParquetExercise").setMaster("local")
     val sc = new SparkContext(conf)
-    val sqlContext = new org.apache.spark.sql.SQLContext(sc)
+    val sqlContext = new org.apache.spark.sql.SQLContext(sc) //this is ordinary sql context to read parquet
+    //val sqlContext = new org.apache.spark.sql.hive.HiveContext(sc) //to use Hive, I should use sqlContext using HiveContext
+
     val parqfile = sqlContext.read.parquet("C:/Users/a613274/Backup/Soojung/NZZdata/nzztest.parquet") //local
     //parqfile.show(20)
 
-    doAnalysisOperations(parqfile)
+    //----------------------------
+    // Exercise on Parquet Files
+    //----------------------------
+    doAnalysisOperations(parqfile, sc)
   }
 
 }
