@@ -5,17 +5,28 @@
   */
 
 
-import org.apache.spark.sql.SQLContext
+import org.apache.spark.sql.{DataFrame, SQLContext}
 import org.apache.spark.{SparkConf, SparkContext}
+
 
 object ScalaDataFrame {
 
   def main(args: Array[String]) {
+    System.setProperty("hadoop.home.dir", "c:\\winutil\\")
+
     val conf = new SparkConf().setAppName("SparkProgramming").setMaster("local")
     val context = new SparkContext(conf)
     val sqlContext = new org.apache.spark.sql.SQLContext(context)
 
-    testDataFrame(context, sqlContext)
+    //test1 : show test data frame
+    //testDataFrame(context, sqlContext)
+
+    //test 2 : union of two data frames
+    import sqlContext.implicits._ //To use toDF, I need to import this
+
+    val dpt1 = Seq(departmentWithEmployees1, departmentWithEmployees5).toDF
+    val dpt2 = Seq(departmentWithEmployees3, departmentWithEmployees4).toDF
+    unionOfDataFrames(dpt1, dpt2)
   }
 
   def testDataFrame(sc : SparkContext, sqlContext : SQLContext): Unit = {
@@ -25,6 +36,18 @@ object ScalaDataFrame {
     val df1 = departmentsWithEmployeesSeq1.toDF()
 
     df1.show()
+
+    val departmentsWithEmployeesSeq2 = Seq(departmentWithEmployees3, departmentWithEmployees4)
+    val df2 = departmentsWithEmployeesSeq2.toDF()
+    df2.show()
+  }
+
+  def unionOfDataFrames(df1:DataFrame, df2:DataFrame): Unit = {
+    val unionDF = df1.unionAll(df2)
+    unionDF.show()
+
+    //write the result to parquet
+    unionDF.write.parquet("union_df.parquet")
   }
 
   // Create the case classes for our domain
