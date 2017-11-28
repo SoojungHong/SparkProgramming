@@ -4,8 +4,8 @@
 import org.apache.spark.sql.DataFrame
 
 object Recommendation {
-  def calculateRecommendations(parameters: RecommendationParameters): DataFrame = {
-
+  //def calculateRecommendations(parameters: RecommendationParameters): DataFrame = {
+  def calculateRecommendations(parameters: RecommendationParameters) = {
     val publishedNotBlacklisted = parameters.productsPurchasedByUser
       /*
       .withColumnRenamed("vector", "article_vector")
@@ -36,7 +36,7 @@ object Recommendation {
       .where(col("rank") <= parameters.maxNumberRecommendedArticles)
       .select("user_id", "nzz_id", "rank")
 */
-    recommendations
+    //recommendations
   }
 
 }

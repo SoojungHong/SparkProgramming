@@ -4,7 +4,7 @@
 		module="sparkrecommendationsample_2.11"
 		revision="1.0"
 		status="integration"
-		publication="20171127155053"
+		publication="20171128182012"
 	>
 		<description>
 		SparkRecommendationSample
@@ -34,26 +34,8 @@
 	<dependencies>
 		<dependency org="org.scala-lang" name="scala-compiler" rev="2.11.8" conf="scala-tool->default,optional(default)"/>
 		<dependency org="org.scala-lang" name="scala-library" rev="2.11.8" conf="scala-tool->default,optional(default);compile->default(compile)"/>
-		<dependency org="org.apache.spark" name="spark-core_2.11" rev="2.0.2" conf="provided->default(compile)">
-			<exclude org="org.scalacheck" module="*" name="*" type="*" ext="*" conf="" matcher="exact"/>
-			<exclude org="org.scalactic" module="*" name="*" type="*" ext="*" conf="" matcher="exact"/>
-			<exclude org="org.scalatest" module="*" name="*" type="*" ext="*" conf="" matcher="exact"/>
-		</dependency>
-		<dependency org="org.apache.spark" name="spark-sql_2.11" rev="2.0.2" conf="provided->default(compile)">
-			<exclude org="org.scalacheck" module="*" name="*" type="*" ext="*" conf="" matcher="exact"/>
-			<exclude org="org.scalactic" module="*" name="*" type="*" ext="*" conf="" matcher="exact"/>
-			<exclude org="org.scalatest" module="*" name="*" type="*" ext="*" conf="" matcher="exact"/>
-		</dependency>
-		<dependency org="org.apache.spark" name="spark-hive_2.11" rev="2.0.2" conf="provided->default(compile)">
-			<exclude org="org.scalacheck" module="*" name="*" type="*" ext="*" conf="" matcher="exact"/>
-			<exclude org="org.scalactic" module="*" name="*" type="*" ext="*" conf="" matcher="exact"/>
-			<exclude org="org.scalatest" module="*" name="*" type="*" ext="*" conf="" matcher="exact"/>
-		</dependency>
-		<dependency org="org.apache.spark" name="spark-mllib_2.11" rev="2.0.2" conf="provided->default(compile)">
-			<exclude org="org.scalacheck" module="*" name="*" type="*" ext="*" conf="" matcher="exact"/>
-			<exclude org="org.scalactic" module="*" name="*" type="*" ext="*" conf="" matcher="exact"/>
-			<exclude org="org.scalatest" module="*" name="*" type="*" ext="*" conf="" matcher="exact"/>
-		</dependency>
+		<dependency org="org.apache.spark" name="spark-core_2.11" rev="2.0.2" conf="compile->default(compile)"/>
+		<dependency org="org.apache.spark" name="spark-sql_2.11" rev="2.0.2" conf="compile->default(compile)"/>
 		<dependency org="com.datastax.spark" name="spark-cassandra-connector_2.11" rev="2.0.2" conf="compile->default(compile)"/>
 		<dependency org="org.slf4j" name="slf4j-api" rev="1.7.10" conf="compile->default(compile)"/>
 		<dependency org="org.slf4j" name="slf4j-log4j12" rev="1.7.10" conf="compile->default(compile)">

@@ -12,6 +12,7 @@ object RecommendationApp {
     val settings = new RecommendationSettings()
     val publishedArticles = cassandraReader
       .readTable(settings.productsKeyspace, settings.productsTable)
+    //ToDo : read cassandra table
       /*
       .readTable(settings.publishedArticlesKeyspace, settings.publishedArticlesTable)
       .select("nzz_id", "department", "pub_date")
@@ -37,6 +38,7 @@ object RecommendationApp {
 */
     //recommendations.writeToCassandra(settings.recommendationsKeyspace, settings.recommendationsTable)
 
+    print("Hi, Soojung")
   }
 
 }

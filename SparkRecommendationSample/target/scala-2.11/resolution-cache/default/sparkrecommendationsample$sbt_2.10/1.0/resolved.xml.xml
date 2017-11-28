@@ -4,7 +4,7 @@
 		module="sparkrecommendationsample$sbt_2.10"
 		revision="1.0"
 		status="integration"
-		publication="20171127155104"
+		publication="20171128182024"
 	/>
 	<configurations>
 		<conf name="default" visibility="public"/>

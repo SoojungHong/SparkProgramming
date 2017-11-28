@@ -17,10 +17,12 @@ val sparkCassandraConnectorVersion = "2.0.2"
 val typeSafeConfigVersion = "1.3.1"
 
 
-//libraryDependencies += "org.apache.spark" %% "spark-core" % "1.6.1"
-//libraryDependencies += "org.apache.spark" %% "spark-sql" % "1.6.1"
+libraryDependencies += "org.apache.spark" %% "spark-core" % "2.0.2"
+libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.0.2"
 
 
+
+/*
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
   "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
@@ -31,6 +33,8 @@ libraryDependencies ++= Seq(
     ExclusionRule(organization = "org.scalactic"),
     ExclusionRule(organization = "org.scalatest")
   ))
+
+*/
 
 libraryDependencies ++= Seq(
   "com.datastax.spark" %% "spark-cassandra-connector" % sparkCassandraConnectorVersion,

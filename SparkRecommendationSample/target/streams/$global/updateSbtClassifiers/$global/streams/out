@@ -1,5 +1,6 @@
 [debug] Other repositories:
 [debug] Default repositories:
+[debug] no default cache defined: set to C:\Users\a613274\.ivy2\cache
 [debug] Using inline dependencies specified in Scala.
 [debug] :: resolving dependencies :: default#sparkrecommendationsample$sbt_2.10;1.0
 [debug] 	confs: [default]
@@ -1778,9 +1779,9 @@
 [debug] 	[NOT REQUIRED] org.scala-sbt#test-interface;1.0!test-interface.jar
 [debug] 	[NOT REQUIRED] org.scala-sbt#apply-macro;0.13.16!apply-macro.jar
 [debug] 	[NOT REQUIRED] org.scala-sbt#template-resolver;0.1!template-resolver.jar
-[debug] :: resolution report :: resolve 578ms :: artifacts dl 58ms
+[debug] :: resolution report :: resolve 567ms :: artifacts dl 83ms
 [debug] 	report for default#sparkrecommendationsample$sbt_2.10;1.0 default produced in C:\Users\a613274\IdeaProjects\SparkRecommendationSample\target\scala-2.11\resolution-cache\reports\default-sparkrecommendationsample$sbt_2.10-default.xml
-[debug] 	resolve done (578ms resolve - 58ms download)
+[debug] 	resolve done (567ms resolve - 83ms download)
 [debug] Using inline dependencies specified in Scala.
 [debug] :: resolving dependencies :: default#sparkrecommendationsample$sources_2.10;1.0
 [debug] 	confs: [default]
@@ -2458,6 +2459,6 @@
 [debug] 	[NOT REQUIRED] org.scala-sbt#tracking;0.13.16!tracking.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-sbt#test-agent;0.13.16!test-agent.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-sbt#command;0.13.16!command.jar(src)
-[debug] :: resolution report :: resolve 194ms :: artifacts dl 59ms
+[debug] :: resolution report :: resolve 232ms :: artifacts dl 77ms
 [debug] 	report for default#sparkrecommendationsample$sources_2.10;1.0 default produced in C:\Users\a613274\IdeaProjects\SparkRecommendationSample\target\scala-2.11\resolution-cache\reports\default-sparkrecommendationsample$sources_2.10-default.xml
-[debug] 	resolve done (194ms resolve - 59ms download)
+[debug] 	resolve done (232ms resolve - 77ms download)
