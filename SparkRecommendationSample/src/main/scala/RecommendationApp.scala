@@ -4,6 +4,9 @@
 import Recommendation._
 import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.functions.col
+import org.apache.spark.sql.functions._
+import GenerateData._
+import CassandraImplicit._
 
 object RecommendationApp {
 
@@ -18,24 +21,35 @@ object RecommendationApp {
         .excludeUnwantedProducts()
         .filter(col("product_price").between(100, 3500))
 
-    products.show()
+    //products.show()
+
+    createParquet()
 
     val parameters = new RecommendationParameters
-    parameters.similarProductThreshold //ToDo : assign
-    parameters.maxNumberRecommendedProducts //ToDo : assign
-    parameters.productsPurchasedByUser //ToDo : assign
+    parameters.similarProductThreshold = 2
+    parameters.maxNumberRecommendedProducts = 1
+    parameters.productsPurchasedByUser = spark.read.parquet("testParquet")
+    //parameters.productsPurchasedByUser.show()
 
     val recommendations = calculateRecommendations(parameters)
+      .withColumn("testcol", lit("4"))
+        .select("group", "testcol")
+      .cache()
       /*
+      //final cleaning to indicate only mattered columns
       .withColumn("computation_id", lit(computationId))
       .withColumnRenamed("nzz_id", "articleid")
       .withColumn("cms", lit("nzz.ch"))
       .withColumnRenamed("user_id", "userid")
       .union(testArticles(publishedArticles, computationId, spark))
       .cache()
-*/
-    //recommendations.writeToCassandra(settings.recommendationsKeyspace, settings.recommendationsTable)
+       */
 
+    recommendations.show()
+
+    recommendations.writeToCassandra("TestKeyspace", "testtable")
+
+    print("DONE, Bye")
   }
 
   implicit class Products(products : DataFrame) {

@@ -7,7 +7,7 @@
 		revision="1.0"
 		conf="compile-internal"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
-		date="20171128182026"/>
+		date="20171129164343"/>
 	<dependencies>
 		<module organisation="com.typesafe" name="config">
 			<revision name="1.3.1" status="release" pubdate="20160924145320" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/typesafehub/config" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="127">
@@ -288,7 +288,7 @@
 		<module organisation="org.apache.spark" name="spark-core_2.11">
 			<revision name="2.0.2" status="release" pubdate="20161108044212" resolver="public" artresolver="public" homepage="http://spark.apache.org/" downloaded="true" searched="true" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="22">
 				<license name="Apache 2.0 License" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
-				<metadata-artifact status="successful" details="" size="21047" time="109" location="C:\Users\a613274\.ivy2\cache\org.apache.spark\spark-core_2.11\ivy-2.0.2.xml" searched="true" original-local-location="C:\Users\a613274\.ivy2\cache\org.apache.spark\spark-core_2.11\ivy-2.0.2.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/apache/spark/spark-core_2.11/2.0.2/spark-core_2.11-2.0.2.pom"/>
+				<metadata-artifact status="successful" details="" size="21047" time="123" location="C:\Users\a613274\.ivy2\cache\org.apache.spark\spark-core_2.11\ivy-2.0.2.xml" searched="true" original-local-location="C:\Users\a613274\.ivy2\cache\org.apache.spark\spark-core_2.11\ivy-2.0.2.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/apache/spark/spark-core_2.11/2.0.2/spark-core_2.11-2.0.2.pom"/>
 				<caller organisation="default" name="sparkrecommendationsample$sources_2.11" conf="compile-internal, compile, provided, optional" rev="2.0.2" rev-constraint-default="2.0.2" rev-constraint-dynamic="2.0.2" callerrev="1.0"/>
 				<artifacts>
 					<artifact name="spark-core_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="1733795" time="0" location="C:\Users\a613274\.ivy2\cache\org.apache.spark\spark-core_2.11\srcs\spark-core_2.11-2.0.2-sources.jar">
@@ -795,7 +795,7 @@
 				<metadata-artifact status="no" details="" size="5022" time="0" location="C:\Users\a613274\.ivy2\cache\org.scalatest\scalatest_2.11\ivy-2.2.6.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scalatest/scalatest_2.11/2.2.6/scalatest_2.11-2.2.6.pom"/>
 				<caller organisation="default" name="sparkrecommendationsample$sources_2.11" conf="compile-internal, compile, provided, optional" rev="2.2.6" rev-constraint-default="2.2.6" rev-constraint-dynamic="2.2.6" callerrev="1.0"/>
 				<artifacts>
-					<artifact name="scalatest_2.11" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="1439140" time="923" location="C:\Users\a613274\.ivy2\cache\org.scalatest\scalatest_2.11\srcs\scalatest_2.11-2.2.6-sources.jar">
+					<artifact name="scalatest_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="1439140" time="0" location="C:\Users\a613274\.ivy2\cache\org.scalatest\scalatest_2.11\srcs\scalatest_2.11-2.2.6-sources.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scalatest/scalatest_2.11/2.2.6/scalatest_2.11-2.2.6-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -1542,7 +1542,7 @@
 				<metadata-artifact status="no" details="" size="7971" time="0" location="C:\Users\a613274\.ivy2\cache\commons-io\commons-io\ivy-2.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/commons-io/commons-io/2.1/commons-io-2.1.pom"/>
 				<caller organisation="default" name="sparkrecommendationsample$sources_2.11" conf="compile-internal, compile, provided, optional" rev="2.1" rev-constraint-default="2.1" rev-constraint-dynamic="2.1" callerrev="1.0"/>
 				<artifacts>
-					<artifact name="commons-io" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="235622" time="220" location="C:\Users\a613274\.ivy2\cache\commons-io\commons-io\srcs\commons-io-2.1-sources.jar">
+					<artifact name="commons-io" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="235622" time="0" location="C:\Users\a613274\.ivy2\cache\commons-io\commons-io\srcs\commons-io-2.1-sources.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/commons-io/commons-io/2.1/commons-io-2.1-sources.jar"/>
 					</artifact>
 				</artifacts>

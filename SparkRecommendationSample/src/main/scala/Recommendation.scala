@@ -2,30 +2,29 @@
   * Created by a613274 on 27.11.2017.
   */
 import org.apache.spark.sql.DataFrame
+import org.apache.spark.sql.functions._
 
 object Recommendation {
-  //def calculateRecommendations(parameters: RecommendationParameters): DataFrame = {
-  def calculateRecommendations(parameters: RecommendationParameters) = {
-    val publishedNotBlacklisted = parameters.productsPurchasedByUser
-      /*
-      .withColumnRenamed("vector", "article_vector")
-      .join(parameters.articlesBlacklist, Seq("nzz_id"), "leftanti")
-*/
 
-    val lastUserActivity = parameters.maxNumberRecommendedProducts
+  def calculateRecommendations(parameters: RecommendationParameters) = {
+    val dataTable = parameters.productsPurchasedByUser.toDF()
+      .withColumnRenamed("someints", "int_array")
+      .withColumnRenamed("somemap", "map")
+
+    dataTable.show()
+
+    val maxNumProducts = parameters.maxNumberRecommendedProducts
+
+    val selectedProducts = parameters.similarProductThreshold
+
+    val recommendations = dataTable
+          .withColumn("doubleVal", col("value"))
+          .groupBy("group").sum("value")
+          .withColumnRenamed("doubleVal", "myVal")
+
+    //recommendations.show()
+
     /*
-      .withColumnRenamed("userid", "user_id")
-      .withColumnRenamed("time", "last_time_active")
-*/
-    val profilesWithArticleVectors = parameters.similarProductThreshold
-  /*
-      .withColumnRenamed("vector", "user_vector")
-      .join(lastUserActivity, "user_id")
-      .join(broadcast(publishedNotBlacklisted))
-      .where(col("pub_date") > col("last_time_active"))
-*/
-    val recommendations = profilesWithArticleVectors //ToDo : it has to be dataframe
-  /*
       .withColumn("distance", sqrt(sqDistance(col("user_vector"), col("article_vector"))))
       .select("user_id", "nzz_id", "size", "distance", "pub_date")
       .withColumn("sim_art_under_threshold", when(col("distance") <= parameters.simArtThreshold, col("size")).otherwise(0))
@@ -36,7 +35,7 @@ object Recommendation {
       .where(col("rank") <= parameters.maxNumberRecommendedArticles)
       .select("user_id", "nzz_id", "rank")
 */
-    //recommendations
+    recommendations
   }
 
 }

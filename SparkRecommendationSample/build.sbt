@@ -19,6 +19,7 @@ val typeSafeConfigVersion = "1.3.1"
 
 libraryDependencies += "org.apache.spark" %% "spark-core" % "2.0.2"
 libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.0.2"
+libraryDependencies += "com.datastax.spark" %% "spark-cassandra-connector" % "2.0.2"
 
 
 
@@ -45,6 +46,8 @@ libraryDependencies ++= Seq(
   "joda-time" % "joda-time" % jodaTimeVersion,
   "com.typesafe" % "config" % typeSafeConfigVersion
 )
+
+
 
 
 
