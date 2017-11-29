@@ -2,6 +2,8 @@
   * Created by a613274 on 27.11.2017.
   */
 import Recommendation._
+import org.apache.spark.sql.DataFrame
+import org.apache.spark.sql.functions.col
 
 object RecommendationApp {
 
@@ -10,17 +12,13 @@ object RecommendationApp {
     val spark = serviceLocator.spark
     val cassandraReader = new CassandraReader(spark)
     val settings = new RecommendationSettings()
-    val publishedArticles = cassandraReader
-      .readTable(settings.productsKeyspace, settings.productsTable)
-    //ToDo : read cassandra table
-      /*
-      .readTable(settings.publishedArticlesKeyspace, settings.publishedArticlesTable)
-      .select("nzz_id", "department", "pub_date")
-      .excludeUnwantedArticles()
-      .filter(col("pub_date").between(epochSecondsToTimestamp(publishedArticlesPeriod._1), epochSecondsToTimestamp(publishedArticlesPeriod._2))) //only get articles that fall into specified timeframe
-      .filter(col("author").isNotNull || col("department") === "Panorama") //filter out agency articles
-      .filter(col("department") !== "Marktplatz") //no articles of type "Marktplatz"
-      */
+    val products = cassandraReader
+        .readTable(settings.productsKeyspace, settings.productsTable)
+        .select("product_id", "product_price")
+        .excludeUnwantedProducts()
+        .filter(col("product_price").between(100, 3500))
+
+    products.show()
 
     val parameters = new RecommendationParameters
     parameters.similarProductThreshold //ToDo : assign
@@ -38,7 +36,17 @@ object RecommendationApp {
 */
     //recommendations.writeToCassandra(settings.recommendationsKeyspace, settings.recommendationsTable)
 
-    print("Hi, Soojung")
+  }
+
+  implicit class Products(products : DataFrame) {
+    val CarProductName = "Jeep"
+
+    def excludeUnwantedProducts(): DataFrame = {
+      products
+        .where(col("product_id").isNull || col("product_name") =!= CarProductName)
+        .where(col("product_id").isNull || col("product_price") > 2000)
+    }
+
   }
 
 }
