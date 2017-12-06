@@ -32,9 +32,9 @@ object RecommendationApp {
     //parameters.productsPurchasedByUser.show()
 
     val recommendations = calculateRecommendations(parameters)
-      .withColumn("testcol", lit("4"))
+        .withColumn("testcol", lit("4"))
         .select("group", "testcol")
-      .cache()
+        .cache()
       /*
       //final cleaning to indicate only mattered columns
       .withColumn("computation_id", lit(computationId))
@@ -47,7 +47,7 @@ object RecommendationApp {
 
     recommendations.show()
 
-    recommendations.writeToCassandra("TestKeyspace", "testtable")
+    recommendations.writeToCassandra("testkeyspace", "testtable")
 
     print("DONE, Bye")
   }
