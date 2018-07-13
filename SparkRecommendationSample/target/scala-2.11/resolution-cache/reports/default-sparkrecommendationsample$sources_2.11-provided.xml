@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="default"
+		module="sparkrecommendationsample$sources_2.11"
+		revision="1.0"
+		conf="provided"
+		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
+		date="20171129164343"/>
+	<dependencies>
+		<module organisation="log4j" name="log4j">
+			<revision name="1.2.17" status="release" pubdate="20120526114339" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://logging.apache.org/log4j/1.2/" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="0">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3708" time="0" location="C:\Users\a613274\.ivy2\cache\log4j\log4j\ivy-1.2.17.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/log4j/log4j/1.2.17/log4j-1.2.17.pom"/>
+				<caller organisation="default" name="sparkrecommendationsample$sources_2.11" conf="provided" rev="1.2.17" rev-constraint-default="1.2.17" rev-constraint-dynamic="1.2.17" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="log4j" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="481200" time="0" location="C:\Users\a613274\.ivy2\cache\log4j\log4j\srcs\log4j-1.2.17-sources.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/log4j/log4j/1.2.17/log4j-1.2.17-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>
